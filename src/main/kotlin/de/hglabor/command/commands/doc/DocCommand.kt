@@ -4,12 +4,30 @@ import de.hglabor.command.SlashCommand
 import de.hglabor.command.commands.doc.entries.*
 import dev.kord.common.Color
 import dev.kord.common.annotation.KordPreview
-import dev.kord.core.behavior.followUp
+import dev.kord.core.behavior.interaction.followUp
 import dev.kord.core.entity.interaction.Interaction
 import dev.kord.core.entity.interaction.string
 import dev.kord.rest.builder.message.EmbedBuilder
 
-val docEntries = listOf<DocEntry>(SpawnEntry, HeadEntry, RulesEntry, LootableBodiesEntry, GravestoneEntry, ColorCommandEntry, CombatLogEntry, ChatEntry)
+
+//archived: Gravestone, CombatLog, Head
+val docEntries = listOf<DocEntry>(
+    RulesEntry,
+    LootableBodiesEntry,
+    ColorCommandEntry,
+    ChatEntry,
+    BiomeEntry,
+    StructuresEntry,
+    LootDropsEntry,
+    JetpackEntry,
+    ParachuteEntry,
+    TemperatureObject,
+    GasEntry,
+    GasmaskEntry,
+    GasfilterEntry,
+    FishingEntry,
+    SpawnEntry
+)
 
 @KordPreview
 object DocCommand : SlashCommand(
@@ -33,7 +51,7 @@ object DocCommand : SlashCommand(
             val entry = interaction.command.options["entry"]?.string()
             if (entry != null) {
                 if(docEntry.keywords.contains(entry.toLowerCase())) {
-                    interaction.acknowledge().followUp {
+                    interaction.ackowledgePublic().followUp {
                         embed {
                             title = "Verfasst von ${docEntry.author}"
                             description = docEntry.description

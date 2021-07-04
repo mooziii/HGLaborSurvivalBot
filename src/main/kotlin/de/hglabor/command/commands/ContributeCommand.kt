@@ -3,7 +3,7 @@ package de.hglabor.command.commands
 import de.hglabor.command.SlashCommand
 import dev.kord.common.Color
 import dev.kord.common.annotation.KordPreview
-import dev.kord.core.behavior.followUp
+import dev.kord.core.behavior.interaction.followUp
 import dev.kord.core.entity.interaction.Interaction
 import dev.kord.rest.builder.message.EmbedBuilder
 
@@ -13,7 +13,7 @@ object ContributeCommand : SlashCommand(
     "Erhalte den Link zur GitHub Repository vom Bot"
 ) {
     override suspend fun handleCommand(interaction: Interaction) {
-        interaction.acknowledge().followUp {
+        interaction.ackowledgePublic().followUp {
             embed {
                 title = "GitHub Repository"
                 description = "Klicke [hier](https://github.com/mooziii/HGLaborSurvivalBot) um zur GitHub Repository des Bot zu gelangen."

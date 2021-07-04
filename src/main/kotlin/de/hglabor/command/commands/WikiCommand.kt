@@ -3,9 +3,7 @@ package de.hglabor.command.commands
 import de.hglabor.command.SlashCommand
 import dev.kord.common.Color
 import dev.kord.common.annotation.KordPreview
-import dev.kord.common.entity.Permission
-import dev.kord.core.behavior.channel.createEmbed
-import dev.kord.core.behavior.followUp
+import dev.kord.core.behavior.interaction.followUp
 import dev.kord.core.entity.interaction.Interaction
 import dev.kord.core.entity.interaction.string
 import dev.kord.rest.builder.message.EmbedBuilder
@@ -26,7 +24,7 @@ object WikiCommand : SlashCommand(
     override suspend fun handleCommand(interaction: Interaction) {
         var entry = interaction.command.options["entry"]?.string()
         if (entry != null) {
-            interaction.acknowledge().followUp {
+            interaction.ackowledgePublic().followUp {
                 embed {
                     title = "Wikieintrag - $entry"
                     description = "Klicke [hier](https://minecraft.gamepedia.com/${entry!!.toLowerCase()}) um zur Wikipage zu gelangen."
@@ -43,7 +41,7 @@ object WikiCommand : SlashCommand(
         } else {
             entry = interaction.command.options["keyword"]?.string()
             if (entry != null) {
-                interaction.acknowledge().followUp {
+                interaction.ackowledgePublic().followUp {
                     embed {
                         title = "Wikisearch - $entry"
                         description = "Klicke [hier](https://minecraft.gamepedia.com/Special:Search?search=${entry.toLowerCase()}&go=Go) um zur Wikisuche zu gelangen."

@@ -1,14 +1,11 @@
 package de.hglabor.command.commands
 
-import de.hglabor.KordEXT.guild
 import de.hglabor.command.CommandManager
 import de.hglabor.command.SlashCommand
 import dev.kord.common.Color
 import dev.kord.common.annotation.KordPreview
-import dev.kord.common.entity.Snowflake
-import dev.kord.core.behavior.followUp
+import dev.kord.core.behavior.interaction.followUp
 import dev.kord.core.entity.interaction.Interaction
-import dev.kord.rest.Image
 import dev.kord.rest.builder.message.EmbedBuilder
 
 @KordPreview
@@ -17,7 +14,7 @@ object HelpCommand : SlashCommand(
     description = "Get help about every command"
 ) {
     override suspend fun handleCommand(interaction: Interaction) {
-        interaction.acknowledge().followUp {
+        interaction.ackowledgePublic().followUp {
             embed {
                 title = "Hilfe"
                 val thumb = EmbedBuilder.Thumbnail()

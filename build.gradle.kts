@@ -18,7 +18,7 @@ dependencies {
     implementation(kotlin("reflect"))
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2")
     implementation("com.google.code.gson:gson:2.8.6")
-    implementation("dev.kord:kord-core:0.7.0-SNAPSHOT")
+    implementation("dev.kord:kord-core:0.7.x-SNAPSHOT")
     implementation("com.gitlab.kordlib:kordx.emoji:0.4.0")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.0.1")
     implementation("io.github.config4k:config4k:0.4.2")
